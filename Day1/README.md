@@ -57,7 +57,7 @@ Add the following text:
 
 > sudo adduser developer
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.001.png)
+![](./images/file.png)
 
 **Remove the user developer:** 
 
@@ -105,7 +105,7 @@ Change the owner to developer and the group to devteam:
 
 Verify the change:
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.002.png)
+![](./images/file.png)
 
 > ls -l server\_config.txt
 
@@ -135,6 +135,8 @@ Check the status of the Apache service:
 
 > sudo systemctl status apache2
 
+![](./images/sys.png)
+
 ## Part 5: Process Handling
 
 **Scenario:** Monitor and manage processes to ensure the server is performing optimally.
@@ -145,11 +147,11 @@ List all running processes:
 
 > ps aux
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.003.png)
+![](./images/ps.png)
 
 Use top to view processes in real-time: `top`
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.004.png)
+![](./images/top.png)
 
 2. **Managing Processes**
 
@@ -157,7 +159,6 @@ Identify a process to kill using ps or top, then kill it:
 
 > kill <PID>
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.005.png)
 
 Change the priority of a process (e.g., running sleep with a lower priority): 
 > nice -n 10 sleep 100 &
@@ -185,8 +186,6 @@ Install Apache2 by running:
 
 > sudo apt install apache2
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.006.png)
-
 1.3. **Start and Enable Apache2**
 
 Start the Apache2 service:
@@ -196,7 +195,7 @@ Start the Apache2 service:
 Enable Apache2 to start on boot: 
 > sudo systemctl enable apache2
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.007.png)
+![](./images/start.png)
 
 1.4. **Verify Installation**
 - Open a web browser and navigate to http://your_server_ip. You should see the Apache2 default page.
@@ -321,9 +320,9 @@ Disable the default site configuration:
 Reload the Apache2 service to apply the changes: 
 > sudo systemctl reload apache2
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.008.png)
+![](./images/apacheconfig.png)
 
 3.5. **Test the Configuration**
 - Open a web browser and navigate to http://your_server_ip. You should see the static website with the HTML, CSS, JS, and image.
 
-![](img/Aspose.Words.a987c81c-4624-43fe-816b-a3b0386c1c4f.009.png)
+![](./images/output.png)
