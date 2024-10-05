@@ -16,7 +16,6 @@ git --version.
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.002.png)
 
 2. **Create a GitHub Repository:**
 - Go to GitHub and create a new repository named website-project.
@@ -34,7 +33,7 @@ git clone https://github.com/your-username/website-project.git
 cd website-project
 ```
 
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.003.png)
+![](./img/git-1.png)
 
 Create initial project structure: 
 ```bash
@@ -49,7 +48,7 @@ git add .
 git commit -m "Initial commit: Added project structure and index.html"
 git push origin master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.005.png)
+![](./img/git-2.png)
 
 ## Exercise 1: Branching and Basic Operations
 
@@ -57,7 +56,7 @@ git push origin master
 
 > git checkout -b feature/add-about-page
 
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.006.png)
+![](./img/git-3.png)
 
 1. **Add a New Page**:
 
@@ -68,8 +67,6 @@ touch src/about.html
 echo "<!DOCTYPE html><html><head><title>About Us</title></head><body><h1>About Us</h1></body></html>" > src/about.html
 ```
 
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.007.png)
-
 - Commit and push changes:
 ```
 git add src/about.html
@@ -77,7 +74,7 @@ git commit -m "Added about page"
 git push origin feature/add-about-page
 ```
 
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.009.png)
+![](./img/git-4.png)
 
 ## Exercise 2: Merging and Handling Merge Conflicts
 
@@ -86,17 +83,20 @@ git push origin feature/add-about-page
 git checkout master
 git checkout -b feature/update-homepage
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.010.png)
+![](./img/git-5.png)
 
 1. **Update the Homepage**:
 
 Modify index.html:
 ```bash
-echo "<p>Updated homepage content</p>" >> src/index.html Commit and push changes:
+echo "<p>Updated homepage content</p>" >> src/index.html
+
+Commit and push changes:
 git add src/index.html
-git commit -m "Updated homepage content" git push origin feature/update-homepage
+git commit -m "Updated homepage content"
+git push origin feature/update-homepage
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.011.png)
+![](./img/git-6.png)
 
 2. **Create a Merge Conflict**:
 
@@ -105,19 +105,21 @@ Modify index.html on the feature/add-about-page branch:
 git checkout feature/add-about-page
 echo "<p>Conflict content</p>" >> src/index.html
 git add src/index.html
-git commit -m "Added conflicting content to homepage" git push origin feature/add-about-page
+git commit -m "Added conflicting content to homepage"
+git push origin feature/add-about-page
 ```
 
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.012.png)
+![](./img/git-7.png)
 
 3. **Merge and Resolve Conflict**:
 
 Attempt to merge feature/add-about-page into master:
 ```bash
 git checkout master
-git merge feature/add-about-page git push origin master
+git merge feature/add-about-page
+git push origin master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.013.png)
+![](./img/git-8.png)
 
 ## Exercise 3: Rebasing
 
@@ -128,7 +130,7 @@ Rebase feature/update-homepage onto master:
 git checkout feature/update-homepage 
 git rebase master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.015.png)
+![](./img/git-9.png)
 
 - Resolve any conflicts that arise during rebase.
 
@@ -136,7 +138,7 @@ git rebase master
 ```bash
 git push -f origin feature/update-homepage
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.016.png)
+![](./img/git-10.png)
 
 ## Exercise 4: Pulling and Collaboration
 
@@ -144,9 +146,10 @@ git push -f origin feature/update-homepage
 
 Ensure the master branch is up-to-date:
 ```bash
-git checkout master git pull origin master
+git checkout master
+git pull origin master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.018.png)
+![](./img/git-11.png)
 
 2. **Simulate a Collaborator's Change**:
 - Make a change on GitHub directly (e.g., edit index.html).
@@ -156,8 +159,7 @@ Pull the changes made by the collaborator:
 ```
 git pull origin master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.019.png)
-
+![](./img/git-12.png)
 ## Exercise 5: Versioning and Rollback
 
 1. **Tagging a Version**:
@@ -167,17 +169,17 @@ Tag the current commit as v1.0:
 git tag -a v1.0 -m "Version 1.0: Initial release" 
 git push origin v1.0
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.021.png)
 
 2. **Make a Change that Needs Reversion**:
 
 Modify index.html:
 ```
-echo "<p>Incorrect update</p>" >> src/index.html git add src/index.html
+echo "<p>Incorrect update</p>" >> src/index.html
+git add src/index.html
 git commit -m "Incorrect update" 
 git push origin master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.022.png)
+![](./img/git-13.png)
 
 3. **Revert to a Previous Version**:
 
@@ -188,7 +190,7 @@ git push origin master
 git reset --hard v1.0
 git push -f origin master
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.023.png)
+![](./img/git-14.png)
 
 **Extra Activities**
 
@@ -202,13 +204,13 @@ Stash the changes:
 
 > git stash
 
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.025.png)
+![](./img/git-15.png)
 
 Apply the stashed changes: 
 ```
 git stash apply
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.026.png)
+![](./img/git-16.png)
 
 2. **Viewing Commit History**:
 
@@ -216,7 +218,7 @@ Use git log to view commit history:
 ```
 git log --oneline
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.027.png)
+![](./img/git-17.png)
 
 3. **Cherry-Picking Commits**:
 
@@ -224,20 +226,21 @@ Create a new branch and cherry-pick a commit from another branch and solving the
 ```
 git checkout -b feature/cherry-pick
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.028.png)
 ```
-git cherry-pick <commit-hash> git cherry-pick --continue
+git cherry-pick <commit-hash>
+git cherry-pick --continue
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.029.png)
+![](./img/git-18.png)
 ```
 git push origin feature/cherry-pick
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.030.png)
+![](./img/git-19.png)
 
 4. **Interactive Rebase**:
 
 Use interactive rebase to squash commits:
 ```
-git checkout master git rebase -i HEAD~3
+git checkout master
+git rebase -i HEAD~3
 ```
-![](img/Aspose.Words.effd7880-22fc-4aa9-9726-80480e66935c.031.png)
+![](./img/git-20.png)
