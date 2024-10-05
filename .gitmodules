@@ -1,0 +1,6 @@
+[submodule "Git_Github/Git_Github/website-project"]
+	path = Git_Github/Git_Github/website-project
+	url = git@github.com:RishiNagale/website-project.git
+[submodule "Git_Github/Sub/website-project"]
+	path = Git_Github/Sub/website-project
+	url = git@github.com:RishiNagale/website-project.git
