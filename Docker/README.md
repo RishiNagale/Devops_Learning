@@ -14,7 +14,7 @@ In this project,we go through all three life cycles of Docker: pulling an image 
 ```bash
 docker pull nginx
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.001.png)
+![](./img/doc-1.png)
 
 1. **Run the Nginx Container:**
 ```
@@ -27,11 +27,11 @@ docker run --name my-nginx -d -p 8081:80 nginx
 ```
 docker ps
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.002.png)
+![](./img/doc-2.png)
 
 Visit http://localhost:8081 in your browser. You should see the Nginx welcome page.
 
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.003.png)
+![](./img/doc-3.png)
 
 ## Part 2: Modifying the Container and Creating a New Image
 
@@ -45,28 +45,28 @@ docker exec -it my-nginx /bin/bash
 
 1. **Create a Custom HTML Page:**
 ```bash
-echo "<html><body><h1>Hello from Docker!</h1></body></html>" > /usr/share/nginx/html/index.html
+echo "<html><body><h1>Hello from Docker</h1></body></html>" > /usr/share/nginx/html/index.html
 ```
 2. **Exit the Container:** exit
 
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.004.png)
+![](./img/doc-4.png)
 
 3. **Commit the Changes to Create a New Image:** 
 ```
 docker commit my-nginx custom-nginx
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.005.png)
+![](./img/doc-5.png)
 
 4. **Run a Container from the New Image:**
 ```
 docker run --name my-custom-nginx -d -p 8082:80 custom-nginx
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.006.png)
+![](./img/doc-6.png)
 
 5. **Verify the New Container:**
 - Visit http://localhost:8082 in your browser. You should see your custom HTML page.
 
-  ![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.007.png)
+![](./img/doc-7.png)
 
 ## Part 3: Creating a Dockerfile to Build and Deploy a Web Application
 
@@ -99,24 +99,24 @@ COPY index.html /usr/share/nginx/html/
 EXPOSE 80
 ```
 
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.008.png)
+![](./img/doc-8.png)
 
 4. **Build the Docker Image:**
 ```
 docker build -t my-webapp-image .
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.009.png)
+![](./img/doc-9.png)
 
 5. **Run a Container from the Built Image:**
 ```
 docker run --name my-webapp-container -d -p 8083:80 my-webapp-image
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.010.png)
+![](./img/doc-10.png)
 
 6. **Verify the Web Application:**
 - Visit http://localhost:8083 in your browser. You should see your custom web application.
 
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.012.png)
+![](./img/doc-11.png)
 
 ## Part 4: Cleaning Up
 
@@ -129,13 +129,13 @@ docker run --name my-webapp-container -d -p 8083:80 my-webapp-image
 docker stop my-nginx my-custom-nginx my-webapp-container
 docker rm my-nginx my-custom-nginx my-webapp-container
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.013.png)
+![](./img/doc-12.png)
 
 1. **Remove the Images:**
 ```
 docker rmi nginx custom-nginx my-webapp-image
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.014.png)
+![](./img/doc-13.png)
 
 **Docker Project 02**
 =====
@@ -167,7 +167,7 @@ docker network create fullstack-network
 ```
 docker volume create pgdata
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.015.png)
+![](./img/doc-14.png)
 
 ## Part 2: Setting Up the Database
 
@@ -180,9 +180,9 @@ docker volume create pgdata
 In the database directory, create a file named Dockerfile with the following content:
 ```Docker
 FROM postgres:latest
-ENV POSTGRES\_USER=user
-ENV POSTGRES\_PASSWORD=password 
-ENV POSTGRES\_DB=mydatabase
+ENV POSTGRES_USER=user
+ENV POSTGRES_PASSWORD=password 
+ENV POSTGRES_DB=mydatabase
 ```
 
 **Build the PostgreSQL Image:** 
@@ -191,13 +191,13 @@ cd database
 docker build -t my-postgres-db . 
 cd ..
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.016.png)
+![](./img/doc-15.png)
 
 2. **Run the PostgreSQL Container:**
 ```
 docker run --name postgres-container --network fullstack-network -v pgdata:/var/lib/postgresql/data -d my-postgres-db
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.017.png)
+![](./img/doc-16.png)
 
 ## Part 3: Setting Up the Backend (Node.js with Express)**
 
@@ -213,7 +213,7 @@ cd backend npm init -y
 ```bash
 npm install express pg
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.018.png)
+![](./img/doc-17.png)
 
 2. **Create the Application Code:**
 
@@ -253,7 +253,8 @@ In the backend directory, create a file named Dockerfile with the following cont
 ```Docker
 FROM node:latest
 WORKDIR /usr/src/app
-COPY package\*.json ./ RUN npm install
+COPY package*.json .
+RUN npm install
 COPY . .
 EXPOSE 3000
 CMD ["node", "index.js"] 
@@ -263,13 +264,13 @@ CMD ["node", "index.js"]
 docker build -t my-node-app . 
 cd ..
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.019.png)
+![](./img/doc-18.png)
 
 **Run the Backend Container:**
 ```
-docker run --name backend-container --network fullstack-network -d my-node- app
+docker run --name backend-container --network fullstack-network -d my-node-app
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.020.png)
+![](./img/doc-19.png)
 
 ## Part 4: Setting Up the Frontend (Nginx)**
 
@@ -306,13 +307,13 @@ cd frontend
 docker build -t my-nginx-app . 
 cd ..
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.021.png)
+![](./img/doc-20.png)
 
 **Run the Frontend Container:**
 ```
 docker run --name frontend-container --network fullstack-network -p 8080:80 -d my-nginx-app
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.022.png)
+![](./img/doc-21.png)
 
 ## Part 5: Connecting the Backend and Database**
 
@@ -334,9 +335,7 @@ apt-get update
 apt-get install -y postgresql-client
 psql -h postgres-container -U user -d mydatabase -c "SELECT NOW();"
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.023.png)
-
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.024.png)
+![](./img/doc-22.png)
 
 Exit the container: exit
 
@@ -353,7 +352,7 @@ Exit the container: exit
 1. **Access the Frontend:**
 - Visit http://localhost:8080 in your browser. You should see the Nginx welcome page with the custom HTML.
 
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.025.png)
+![](./img/doc-23.png)
 
 2. **Verify Full Integration:**
 
@@ -373,7 +372,8 @@ Update the index.html to include a link to the backend:
 **Rebuild and Run the Updated Frontend Container:**
 ```powershell
 cd frontend
-docker build -t my-nginx-app . docker stop frontend-container
+docker build -t my-nginx-app .
+docker stop frontend-container
 docker rm frontend-container
 docker run --name frontend-container --network fullstack-network -p 8080:80 -d my-nginx-app
 cd ..
@@ -393,16 +393,16 @@ cd ..
 docker stop frontend-container backend-container postgres-container 
 docker rm frontend-container backend-container postgres-container
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.026.png)
 
 1. **Remove the Images:**
 ```
 docker rmi my-nginx-app my-node-app my-postgres-db
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.027.png)
 
 2. **Remove the Network and Volume:**
 ```
-docker network rm fullstack-network docker volume rm pgdata
+docker network rm fullstack-network
+docker volume rm pgdata
 ```
-![](img/Aspose.Words.b9fc19cf-4df2-426c-acb1-b795dc3ab1d6.028.png)
+![](./img/doc-24.png)
+
